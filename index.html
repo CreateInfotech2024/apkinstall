@@ -1,30 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Install My App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f8f9fa; }
-    .install-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
-    button { font-size: 18px; padding: 12px 24px; background: #4CAF50; color: white; border: none; border-radius: 8px; cursor: pointer; }
-    button:hover { background: #45a049; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install App</title>
 </head>
-<body>
-  <div class="install-box">
-    <h2>Install Our App</h2>
-    <p>Get the latest version instantly</p>
-    <button onclick="confirmAndInstall()">Install</button>
-  </div>
-
-  <script>
-    function confirmAndInstall() {
-      if (confirm("Do you want to install this app?")) {
-        window.location.href = "app-arm64-v8a-release.apk";
-      }
-    }
-  </script>
+<body style="text-align: center; font-family: Arial, sans-serif;">
+    <h1>🚀 Install Our App</h1>
+    <p>Click the button below to download and install the app.</p>
+    <a href="app-arm64-v8a-release.apk" download>
+        <button style="padding: 12px 24px; font-size: 18px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+            Install Now
+        </button>
+    </a>
 </body>
 </html>
