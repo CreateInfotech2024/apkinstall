@@ -1,24 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ff4081" />
-  <title>Beauty LMS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install Beauty LMS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="manifest.json" />
+    .container {
+      max-width: 480px;
+      margin: 30px auto;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .header img {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      margin-right: 16px;
+    }
+
+    .app-info h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .app-info p {
+      margin: 4px 0 0;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .screenshots {
+      display: flex;
+      overflow-x: auto;
+      padding: 12px;
+      gap: 12px;
+    }
+
+    .screenshots img {
+      width: 120px;
+      border-radius: 8px;
+    }
+
+    .description {
+      padding: 16px;
+      color: #444;
+      font-size: 15px;
+    }
+
+    .install-btn {
+      margin: 16px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      width: calc(100% - 32px);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .install-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
+
 <body>
+
   <div class="container">
-    <h1>Beauty LMS</h1>
-    <p>Your learning platform for beauty courses.</p>
-    <button id="installBtn" class="install-btn">📥 Install App</button>
+    <div class="header">
+      <img src="icons/Icon-192.png" alt="App Icon">
+      <div class="app-info">
+        <h1>Beauty LMS</h1>
+        <p>by beauty-lms-pwa.netlify.app</p>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <img src="screenshot1.png" alt="screenshot1">
+      <img src="screenshot2.png" alt="screenshot2">
+      <img src="screenshot3.png" alt="screenshot3">
+    </div>
+
+    <div class="description">
+      Beauty LMS is a powerful learning management system built for beauty schools, academies, and training centers.
+      Track progress, manage content, and engage learners with ease.
+    </div>
+
+    <button class="install-btn" id="installBtn" disabled>📥 Install App</button>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    // Detect if the app is already installed
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+        installBtn.innerText = "Open App";
+        installBtn.disabled = false;
+        installBtn.addEventListener('click', () => {
+          window.location.href = '/'; // Opens the main PWA app
+        });
+      }
+    });
+
+    // Show install prompt if available
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.innerText = "📥 Install App";
+      installBtn.disabled = false;
+      installBtn.addEventListener('click', () => {
+        deferredPrompt.prompt();
+      });
+    });
+  </script>
+
 </body>
+
 </html>
