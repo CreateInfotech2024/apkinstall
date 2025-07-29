@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Download App</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body onload="window.location.href='app-arm64-v8a-release.apk'">
-    <h2>Preparing installation...</h2>
-    <p>If nothing happens, <a href="app-arm64-v8a-release.apk">click here</a>.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff4081" />
+  <title>Beauty LMS</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Beauty LMS</h1>
+    <p>Your learning platform for beauty courses.</p>
+    <button id="installBtn" class="install-btn">📥 Install App</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
 </html>
